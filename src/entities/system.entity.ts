@@ -18,6 +18,9 @@ export class System {
     @Column({ length: 50, nullable: true})
     url: string
 
-    @Column({ length: 100})
+    @Column({default: "ativo"})
+    status: string
+
+    @Column({ length: 100, default: null})
     lastChangeUser: string
 }
