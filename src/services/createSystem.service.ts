@@ -13,7 +13,7 @@ export const createSystemService = async (body: IRequestSystem) => {
       throw new AppError(err.errors[0], 400);
     });
 
-  const createSystem = systemRepository.create(validateData);
+  const createSystem = systemRepository.create({...validateData, updatedAt: new Date()});
 
   const system = await systemRepository.save(createSystem);
 
