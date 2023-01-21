@@ -25,6 +25,14 @@ export const findSystemService = async (searchData: ISearchSystem) => {
     offset = 0;
   }
 
+  const total = await systemQueryBuilder
+    .select()
+    .where(searchQuery, {
+      ...searchData,
+      description: `%${searchData.description}%`,
+    })
+    .getCount();
+
   const systems = await systemQueryBuilder
     .select()
     .where(searchQuery, {
@@ -36,5 +44,5 @@ export const findSystemService = async (searchData: ISearchSystem) => {
     .orderBy("systems.updatedAt", "DESC")
     .getMany();
 
-  return { total: 19, systems: systems };
+  return { total: total, systems: systems };
 };
