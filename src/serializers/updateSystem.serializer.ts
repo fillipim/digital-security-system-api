@@ -6,6 +6,7 @@ export const updateSystemSerializer: yup.SchemaOf<IUpdateSystem> = yup.object().
     acronym: yup.string().required(),
     systemEmail: yup.string().email().notRequired(),
     justificationChange: yup.string().max(500).required(),
-    lastUserChange: yup.string().required(),
-    url: yup.string().notRequired()
+    lastChangeUser: yup.string().required(),
+    url: yup.string().notRequired(),
+    status: yup.string().required()
 });
