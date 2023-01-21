@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 
 @Entity("systems")
@@ -21,6 +21,12 @@ export class System {
     @Column({default: "ativo"})
     status: string
 
+    @UpdateDateColumn()
+    updatedAt: Date
+
     @Column({ length: 100, default: null})
     lastChangeUser: string
-}
+
+    @Column({length: 500, default: null})
+    justificationChange: string
+};
