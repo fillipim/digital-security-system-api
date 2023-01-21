@@ -12,7 +12,12 @@ export const updateSystemService = async (
 
   const findSystem = systemRepository.findOneBy({ id: systemId });
 
-  updateSystemSerializer.validate(updateData, {
+  if (!findSystem) {
+    throw new AppError("System not found", 404);
+  }
+
+  updateSystemSerializer
+    .validate(updateData, {
       stripUnknown: true,
       abortEarly: true,
     })
@@ -20,12 +25,16 @@ export const updateSystemService = async (
       throw new AppError(err.errors[0], 400);
     });
 
-  systemRepository.update(systemId, {
+  const systemUpdated = systemRepository.create({
     ...findSystem,
     ...updateData,
   });
 
-  const system = systemRepository.findOneBy({ id: systemId });
+  await systemRepository.update(systemId, systemUpdated);
+
+  await systemRepository.findOneBy({ id: systemId });
+
+  const system = await systemRepository.findOneBy({ id: systemId });
 
   return system;
 };
