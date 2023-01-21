@@ -9,7 +9,6 @@ export const createSystemSerializer: yup.SchemaOf<IRequestSystem> = yup
     systemEmail: yup
       .string()
       .email()
-      .matches(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/i)
       .max(100)
       .notRequired(),
     url: yup.string().max(50).notRequired(),
