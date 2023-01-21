@@ -83,7 +83,56 @@ Após rodar um dos comandos aparecerá um log no seu terminal, contendo as infor
 
 **Observação:** O teste pode demorar alguns segundos para ser finalizado. Quanto maior for o teste, mais tempo será consumido para a execução.
 
-#
+## Endpoints
+
+## Url base: https://digital-security-system-api.onrender.com
+
+Existem 3 verbos http que podem ser utilizados nessa api.
+
+POST /systems
+
+**Somente description e acronym são obrigatórios**
+
+FORMATO DA REQUISIÇÃO
+```
+{
+  "description": "Security System",
+  "acronym": "SS",
+  "systemEmail": "ss.system@gmail.com",
+  "url": "https://security.com"
+}
+```
+GET /systems
+
+**Os parametros de pesquisa são passados pelas query params**
+
+-description
+-systemEmail
+-acronym
+
+FORMATO DA REQUISIÇÃO
+```
+https://digital-security-system-api.onrender.com/systems?systemEmail&description&acronym
+```
+
+PATCH /systems
+
+**Somente o systems email e a url são parametros opcionais.**
+
+FORMATO DA RESPOSTA
+```
+ {
+  "description\"": "Sitema de Segurança",
+  "acronym": "SS",
+  "systemEmail": "ss.system@gmail.com",
+  "url": "https://security.com",
+  "lastChangeUser": "User",
+  "justificationChange": "Para teste",
+  "status": "Cancelado",
+  "updatedAt": "2023-01-19T12:23:48.419Z"
+}
+```
+
 
 
 
