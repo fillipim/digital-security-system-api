@@ -11,7 +11,8 @@ export interface IUpdateSystem {
     systemEmail?: string,
     url?: string,
     justificationChange: string
-    lastUserChange: string
+    lastChangeUser: string,
+    status: string
 }
 
 export interface ISearchSystem {
